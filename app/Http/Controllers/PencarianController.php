@@ -21,7 +21,7 @@ class PencarianController extends Controller
 
         $results = LembarKontrol::where('tahun_anggaran', 'like', '%' . $keyword . '%')
                     ->orWhere('no_kontrak', 'like', '%' . $keyword . '%')
-                    ->get(['tahun_anggaran', 'no_kontrak']); // Adjust to your actual columns
+                    ->get(['tahun_anggaran', 'no_kontrak', 'sub_satker', 'uraian_tagihan', 'pic_vendor', 'skb_sktd']); // Adjust to your actual columns
 
         return response()->json($results);
     }

@@ -92,7 +92,7 @@
         $('#search').on('submit', function(e) {
             e.preventDefault();
             var keyword = $('#search-keyword').val();
-            console.log("cari ", keyword);
+            
             $.ajax({
                 url: '/lembar-kontrol/cari',
                 method: 'POST',
@@ -105,16 +105,33 @@
                     resultsContainer.empty();
                     if (response.length > 0) {
                         response.forEach(function(item) {
-                            var listItem = '<li>' + 
-                                '<div class="d-flex align-items-center">' +
-                                    '<div class="flex-grow-1 ms-2">' +
-                                        '<h5 class="mt-0 mb-1">' + item.tahun_anggaran + '</h5>' +
-                                        '<p class="font-13 text-muted mb-0">' + item.no_kontrak + '</p>' +
-                                    '</div>' +
-                                '</div>' +
-                                '<hr class="my-3">' +
-                            '</li>';
+                            var listItem = '<li class="active">'+
+                                                '<a href="#">'+
+                                                    '<div class="d-flex">'+
+                                                        
+                                                        '<div class="flex-grow-1 overflow-hidden">'+
+                                                            '<h5 class="text-truncate font-14 mt-0 mb-1"> No Kontrak '+ item.no_kontrak+'</h5>'+
+                                                            '<p class="text-truncate mb-0">Tahun Anggaran '+item.tahun_anggaran+'</p>'+
+                                                            '<p class="text-truncate mb-0">Sub Satker '+item.sub_satker+'</p>'+
+                                                            '<p class="text-truncate mb-0">Suplier '+item.pic_vendor+'</p>'+
+                                                            '<p class="text-truncate mb-0">Uraian Tagihan '+item.uraian_tagihan+'</p>'+
+                                                            '<p class="text-truncate mb-0">SKB SKTD '+item.skb_sktd+'</p>'+
+                                                        '</div>'+
+                                                        '<div class="font-11">05 min</div>'+
+                                                    '</div>'+
+                                                '</a>'+
+                                            '</li>';
+                            // var listItem = '<li>' + 
+                            //     '<div class="d-flex align-items-center">' +
+                            //         '<div class="flex-grow-1 ms-2">' +
+                            //             '<h5 class="mt-0 mb-1">' + item.tahun_anggaran + '</h5>' +
+                            //             '<p class="font-13 text-muted mb-0">' + item.no_kontrak + '</p>' +
+                            //         '</div>' +
+                            //     '</div>' +
+                            //     '<hr class="my-3">' +
+                            // '</li>';
                             resultsContainer.append(listItem);
+                            console.log("cari ", item.tahun_anggaran);
                         });
                     } else {
                         resultsContainer.append('<li><p class="text-muted">No results found</p></li>');
