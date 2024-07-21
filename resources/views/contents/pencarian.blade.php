@@ -3,53 +3,129 @@
 @section('content')
 <div class="content">
 
-<!-- Start Content-->
-<div class="container-fluid">
+    <!-- Start Content-->
+    <div class="container-fluid">
 
-    <div class="row"> 
-        <div class="col-xl-3 col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="dropdown float-end">
-                        <a href="#" class="dropdown-toggle arrow-none card-drop"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="mdi mdi-dots-vertical"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end">
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item">Something else</a>
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
-                        </div>
-                    </div>
 
-                    <h4 class="header-title mt-0 mb-4">Total Revenue</h4>
+        <div class="row">
 
-                    <div class="widget-chart-1">
-                        <div class="widget-chart-box-1 float-start" dir="ltr">
-                            <input data-plugin="knob" data-width="70" data-height="70"
-                                data-fgColor="#f05050 " data-bgColor="#F9B9B9" value="58"
-                                data-skin="tron" data-angleOffset="180" data-readOnly=true
-                                data-thickness=".15" />
+            <div class="col-xl-12 col-lg-12">
+                <div class="card chat-list-card mb-xl-0">
+                    <div class="card-body">
+                       
+                        <div class="d-flex">
+                            
+                            <div class="flex-grow-1 align-items-center ms-2">
+                                <h5 class="mt-0 mb-1">Pencarian Lembar Dokumen Kontrol</h5>
+                                <p class="font-13 text-muted mb-0">Silahkan masukan kata kunci untuk mencari dokumen berdasarkan bla bla</p>
+                            </div>
+
                         </div>
 
-                        <div class="widget-detail-1 text-end">
-                            <h2 class="fw-normal pt-2 mb-1"> 256 </h2>
-                            <p class="text-muted mb-1">Revenue today</p>
+                        <hr class="my-3">
+
+                        <div class="search-box chat-search-box">
+                            <!-- <input type="text" class="form-control" placeholder="Search...">
+                            <i class="mdi mdi-magnify search-icon"></i>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Search</button> -->
+                            <form id="search">
+                            @csrf
+                                <div class="row"> 
+                                    <div class="col">
+                                        <div>
+                                            <input type="text" id="search-keyword" class="form-control" placeholder="Masukan kata kunci yang akan dicari...">
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="submit" class="btn btn-primary chat-send width-md waves-effect waves-light">
+                                            <span class="d-none d-sm-inline-block me-2">Cari</span> 
+                                            <i class="mdi mdi-magnify search-icon"></i>
+                                        </button>
+                                    </div> 
+                                </div>
+                            </form>
+                        </div>
+
+                        <hr class="my-3">
+
+                        <div class="">
+                            <ul class="list-unstyled chat-list mb-0" style="max-height: 413px;" id="search-results" data-simplebar>
+                                <!-- hasilnya pencarian di sini -->
+                                <!-- <li class="active">
+                                                <a href="#">
+                                                    <div class="d-flex">
+                                                        <div
+                                                            class="flex-shrink-0 chat-user-img active align-self-center me-2">
+                                                            <img src="/images/users/user-2.jpg"
+                                                                class="rounded-circle avatar-sm" alt="">
+                                                        </div>
+
+                                                        <div class="flex-grow-1 overflow-hidden">
+                                                            <h5 class="text-truncate font-14 mt-0 mb-1">Margaret Clayton
+                                                            </h5>
+                                                            <p class="text-truncate mb-0">I've finished it! See you
+                                                                so...</p>
+                                                        </div>
+                                                        <div class="font-11">05 min</div>
+                                                    </div>
+                                                </a>
+                                            </li> -->
+                                
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </div><!-- end col -->
+            
 
-    </div>
-    <!-- end row -->
+        </div>
+        <!-- end row -->
+    </div> <!-- container -->
 
-</div> <!-- container-fluid -->
+</div> 
+            <!-- content -->
+@endsection
 
-</div> <!-- content -->
+@section('function-js')
+<script>
+    $(document).ready(function() {
+        $('#search').on('submit', function(e) {
+            e.preventDefault();
+            var keyword = $('#search-keyword').val();
+            console.log("cari ", keyword);
+            $.ajax({
+                url: '/lembar-kontrol/cari',
+                method: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    keyword: keyword
+                },
+                success: function(response) {
+                    var resultsContainer = $('#search-results');
+                    resultsContainer.empty();
+                    if (response.length > 0) {
+                        response.forEach(function(item) {
+                            var listItem = '<li>' + 
+                                '<div class="d-flex align-items-center">' +
+                                    '<div class="flex-grow-1 ms-2">' +
+                                        '<h5 class="mt-0 mb-1">' + item.tahun_anggaran + '</h5>' +
+                                        '<p class="font-13 text-muted mb-0">' + item.no_kontrak + '</p>' +
+                                    '</div>' +
+                                '</div>' +
+                                '<hr class="my-3">' +
+                            '</li>';
+                            resultsContainer.append(listItem);
+                        });
+                    } else {
+                        resultsContainer.append('<li><p class="text-muted">No results found</p></li>');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
+    });
+</script>
+
 @endsection

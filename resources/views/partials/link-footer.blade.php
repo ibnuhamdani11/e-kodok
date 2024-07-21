@@ -5,7 +5,7 @@
 <script src="{{ asset('adminto/libs/node-waves/waves.min.js') }}"></script>
 <script src="{{ asset('adminto/libs/waypoints/lib/jquery.waypoints.min.js') }}"></script>
 <script src="{{ asset('adminto/libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
-<script src="{{ asset('adminto/libs/feather-icons/feather.min.js') }}"></script>
+<script src="{{ asset('adminto/libs/feather-icons/feather.min.js') }}"></script> 
 
 <!-- knob plugin -->
 <script src="{{ asset('adminto/libs/jquery-knob/jquery.knob.min.js') }}"></script>

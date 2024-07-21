@@ -274,8 +274,7 @@ $(document).ready(function() {
 
     // Submit Form
     $('#dataForm').on('submit', function (event) {
-        console.log("submit ");
-        console.log("data ", $(this).serialize());
+        
         event.preventDefault();
         var id = $('#id').val();
         var url = id ? '/route-to-update-data/' + id : '/petugas/add';

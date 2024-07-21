@@ -18,7 +18,19 @@ class LembarKontrolController extends Controller
     }       
     public function store(Request $request)
     {
-        LembarKontrol::create($request->all());
+        $request->validate([
+            'file' => 'required|mimes:pdf,doc,docx,png,jpg,jpeg|max:2048', // Add validation rules
+            // Add other validation rules here
+        ]);
+        $fileName = time().'.'.$request->file->extension();  
+        $request->file->move(public_path('uploads'), $fileName);
+
+        $data = $request->all();
+        // $data->no_kontrak = $request->no_kontrak;
+        $data['file'] = $fileName;
+        // // Save other fields...
+        // $data->save();
+        LembarKontrol::create($data);
         return response()->json(['success' => 'Data saved successfully']);
     }
     public function show($id)

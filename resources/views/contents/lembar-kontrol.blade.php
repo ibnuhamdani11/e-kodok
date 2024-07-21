@@ -138,7 +138,8 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="file" class="form-label">Dokumen Wabku</label>
-                                                    <input class="form-control" type="file" id="file">
+                                                    <input class="form-control" type="file" 
+                                                    name="file"  id="file">
                                                 </div>
 
                                             </div> <!-- end col -->
@@ -722,20 +723,24 @@ $(document).ready(function() {
 
     // Submit Form
     $('#dataForm').on('submit', function (event) {
-        // console.log("submit ");
+        // 
         event.preventDefault();
         var id = $('#id').val();
         var url = id ? '/route-to-update-data/' + id : '/lembar-kontrol/add';
-        var data = {
-            id: $('#id').val(),
-            fullname: $('#fullname').val(),
-            _token: '{{ csrf_token() }}' // Include CSRF token
-        };
-
+        // var data = {
+        //     id: $('#id').val(),
+        //     fullname: $('#fullname').val(),
+        //     _token: '{{ csrf_token() }}' // Include CSRF token
+        // }; 
+        var formData = new FormData(this); 
+        console.log("submit ", formData);
         $.ajax({
             url: url,
             method: id ? 'PUT' : 'POST',
-            data: $(this).serialize(),
+            // data: $(this).serialize(),
+            data: formData,
+            processData: false,
+            contentType: false,
             success: function (response) {
                 $('#fullWidthModal').modal('hide');
                 // Refresh table or redirect

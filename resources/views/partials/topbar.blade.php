@@ -3,18 +3,18 @@
     <div class="logo-box">
         <a href="#" class="logo logo-light text-center">
             <span class="logo-sm">
-                <img src="{{ asset('adminto/images/logo_ekodok.png') }}" alt="" height="42">
+                <img src="{{ asset('adminto/images/logo_ekodok-panjang.png') }}" alt="" height="42">
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('adminto/images/logo_ekodok.png') }}" alt="" height="46">
+                <img src="{{ asset('adminto/images/logo_ekodok-panjang.png') }}" alt="" height="46">
             </span>
         </a>
         <a href="#" class="logo logo-dark text-center">
             <span class="logo-sm">
-                <img src="{{ asset('adminto/images/logo_ekodok.png') }}" alt="" height="42">
+                <img src="{{ asset('adminto/images/logo_ekodok-panjang.png') }}" alt="" height="42">
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('adminto/images/logo_ekodok.png') }}" alt="" height="46">
+                <img src="{{ asset('adminto/images/logo_ekodok-panjang.png') }}" alt="" height="46">
             </span>
         </a>
     </div>
@@ -27,7 +27,7 @@
         </li>
 
         <li>
-            <h4 class="page-title-main">E-Lektronik Kontrol Dokumen</h4>
+            <h4 class="page-title-main">Aplikasi Penyimpanan Dokumen Barang Milik Negara</h4>
         </li>
 
     </ul>

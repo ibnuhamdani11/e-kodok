@@ -29,9 +29,9 @@
                 <div class="col-md-8 col-lg-6 col-xl-4">
                     <div class="text-center">
                         <a href="">
-                            <img src="{{ asset('adminto/images/logo_ekodok.png') }}" alt="" height="64" class="mx-auto">
+                            <img src="{{ asset('adminto/images/logo_ekodok-panjang.png') }}" alt="" height="64" class="mx-auto">
                         </a>
-                        <p class="text-muted mt-2 mb-4">e-lektronik kontrol dokument</p>
+                        <p class="text-muted mt-2 mb-4">Aplikasi Penyimpanan Dokumen Barang Milik Negara</p>
 
                     </div>
                     <div class="card">

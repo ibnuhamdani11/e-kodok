@@ -35,6 +35,7 @@ Route::get('/signout', [CustomAuthController::class, 'signOut'])->name('signout'
 
 Route::get('/lembar-kontrol', [LembarKontrolController::class, 'index'])->name('lembar-kontrol');
 Route::post('/lembar-kontrol/add', [LembarKontrolController::class, 'store'])->name('lembar-kontrol-add');
+Route::post('/lembar-kontrol/cari', [PencarianController::class, 'search'])->name('lembar-kontrol-cari');
 
 Route::get('/petugas-verifikator', [PetugasController::class, 'verifikator'])->name('verifikator');
 Route::get('/petugas-kasi-urji', [PetugasController::class, 'kasiUrji'])->name('kasi-urji');
