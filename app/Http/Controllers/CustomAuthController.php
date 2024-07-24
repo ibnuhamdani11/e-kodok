@@ -16,7 +16,7 @@ class CustomAuthController extends Controller
     public function customLogin(Request $request)
     {
         $request->validate([
-            'email' => 'required',
+            'email' => 'required|email',
             'password' => 'required',
         ]); 
         $credentials = $request->only('email', 'password'); 
@@ -29,7 +29,7 @@ class CustomAuthController extends Controller
         //     dd('gagal');
         // }
   
-        return redirect("login")->withSuccess('Login details are not valid');
+        return redirect("login")->withErrors(['login' => 'Email dan Password Salah']);
     }
     public function registration()
     {

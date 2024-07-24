@@ -30,6 +30,7 @@ class LembarKontrol extends Model
             'uraian_tagihan',
             'pengantar_dokumen',
             'file',
+            'nomor_skb_sktd',
             'kwitansi_ls',
             'kwitansi_ls_ket',
             'skb_sktd',

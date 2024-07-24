@@ -21,24 +21,22 @@
                             class="table table-bordered table-bordered dt-responsive nowrap">
                             <thead>
                                 <tr>
-                                    <th>Nomor Kontrak</th>
                                     <th>Tahun Anggaran</th>
-                                    <th>Jenis Pengeluaran</th>
-                                    <th>Mata Anggaran</th>
+                                    <th>Nomor Kontrak</th>
+                                    <th>Nomor SKB/SKTD</th>
                                     <th>Sub Satker</th>
-                                    <th>Vendor</th>
+                                    <th>Suplier</th> 
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach($data as $item)
-                            <tr>
-                                    <td>{{ $item->no_kontrak }}</td>
+                                @foreach($data as $item)
+                                <tr>
                                     <td>{{ $item->tahun_anggaran }}</td>
-                                    <td>{{ $item->jenis_pengeluaran }}</td>
-                                    <td>{{ $item->mata_anggaran }}</td>
+                                    <td>{{ $item->no_kontrak }}</td>
+                                    <td>{{ $item->nomor_skb_sktd }}</td>
                                     <td>{{ $item->sub_satker }}</td>
-                                    <td>{{ $item->puc_vendor }}</td>
+                                    <td>{{ $item->pic_vendor }}</td>
                                     <td>
                                         <button type="button" class="btn btn-success edit" data-id="{{ $item->id }}">Edit</button>
                                         <button type="button" class="btn btn-danger delete" data-id="{{ $item->id }}">Delete</button>
@@ -65,7 +63,54 @@
                                         <!-- <input type="hidden" id="role" name="role" value="verifikator"> -->
                                         <div class="row">
                                             <div class="col-lg-6"> 
-                                                <div class="mb-3">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label for="tahun_anggaran" class="form-label">Tahun Anggaran</label>
+                                                            <input type="year" id="tahun_anggaran" name="tahun_anggaran" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label for="no_kontrak" class="form-label">Kontrak/SPK</label>
+                                                            <input type="text" id="no_kontrak" name="no_kontrak" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label for="sub_satker" class="form-label">Sub Satker</label>
+                                                            <input type="text" id="sub_satker" name="sub_satker" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label for="pic_vendor" class="form-label">Suplier</label>
+                                                            <input type="text" id="pic_vendor" name="pic_vendor" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label for="file" class="form-label">Dokumen Wabku</label>
+                                                            <input class="form-control" type="file" 
+                                                            name="file"  id="file">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label for="nomor_skb_sktd" class="form-label">Nomor SKB/SSKTD</label>
+                                                            <input type="text" id="nomor_skb_sktd" name="nomor_skb_sktd" class="form-control">
+                                                        </div> 
+                                                    </div>
+                                                </div>
+                                                
+                                               
+                                                
+                                                <!-- <div class="mb-3">
                                                     <label for="tahun_anggaran" class="form-label">Tahun Anggaran</label>
                                                     <input type="year" id="tahun_anggaran" name="tahun_anggaran" class="form-control">
                                                 </div> 
@@ -107,11 +152,17 @@
                                                     <label for="alamat_vendor" class="form-label">Alamat</label>
                                                     <textarea class="form-control" id="alamat_vendor" name="alamat_vendor"
                                                     rows="5"></textarea>
-                                                </div> 
-                                            </div> <!-- end col -->
+                                                </div>  -->
+                                            </div> 
+                                            <!-- end col -->
 
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-6"> 
                                                 <div class="mb-3">
+                                                    <label for="uraian_tagihan" class="form-label">Uraian Tagihan</label>
+                                                    <textarea class="form-control" id="uraian_tagihan" name="uraian_tagihan"
+                                                    rows="10"></textarea>
+                                                </div>
+                                                <!-- <div class="mb-3">
                                                     <label for="no_kontrak" class="form-label">Kontrak/SPK</label>
                                                     <input type="text" id="no_kontrak" name="no_kontrak" class="form-control">
                                                 </div>
@@ -140,11 +191,12 @@
                                                     <label for="file" class="form-label">Dokumen Wabku</label>
                                                     <input class="form-control" type="file" 
                                                     name="file"  id="file">
-                                                </div>
+                                                </div> -->
 
-                                            </div> <!-- end col -->
-                                            <hr>
-                                            <div class="col-lg-6"> 
+                                            </div> 
+                                            <!-- end col -->
+                                            <!-- <hr> -->
+                                            <!-- <div class="col-lg-6"> 
                                                 <div class="row">
                                                     <div class="col-lg-3">
                                                         <div class="mb-3">
@@ -376,9 +428,9 @@
                                                     </div>
                                                 </div> 
                                                 
-                                            </div> <!-- end col -->
+                                            </div> -->
 
-                                            <div class="col-lg-6"> 
+                                            <!-- <div class="col-lg-6"> 
                                                 <div class="row">
                                                     <div class="col-lg-3">
                                                         <div class="mb-3">
@@ -587,9 +639,10 @@
                                                     </div>
                                                 </div>
 
-                                            </div> <!-- end col -->
+                                            </div>  -->
+                                            <!-- end col -->
 
-                                            <hr>
+                                            <!-- <hr>
                                             <div class="col-lg-6"> 
                                                 <div class="mb-3">
                                                     <label for="jml_barang" class="form-label">Jumlah Barang</label>
@@ -608,9 +661,10 @@
                                                     <input type="text" id="ppn_11" name="ppn_11" class="form-control">
                                                 </div>
                                                  
-                                            </div> <!-- end col -->
+                                            </div>  -->
+                                            <!-- end col -->
 
-                                            <div class="col-lg-6">
+                                            <!-- <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label for="ppn" class="form-label">PPN</label>
                                                     <input type="text" id="ppn" name="ppn" class="form-control">
@@ -628,41 +682,45 @@
                                                     <input type="text" id="denda" name="denda" class="form-control">
                                                 </div>
 
-                                            </div> <!-- end col -->
+                                            </div>  -->
+                                            <!-- end col -->
 
-                                            <hr>
+                                            <!-- <hr>
                                             <div class="col-lg-6"> 
                                                 <div class="mb-3">
                                                     <label for="jumlah_potongan" class="form-label">JUMLAH POTONGAN</label>
                                                     <input type="text" id="jumlah_potongan" name="jumlah_potongan" class="form-control">
                                                 </div>  
 
-                                            </div> <!-- end col -->
+                                            </div>  -->
+                                            <!-- end col -->
 
-                                            <div class="col-lg-6">
+                                            <!-- <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label for="jumlah_terima" class="form-label">JUMLAH YANG DITERIMA</label>
                                                     <input type="text" id="jumlah_terima" name="jumlah_terima" class="form-control">
                                                 </div>  
 
-                                            </div> <!-- end col -->
+                                            </div>  -->
+                                            <!-- end col -->
 
-                                            <hr>
+                                            <!-- <hr>
                                             <div class="col-lg-6"> 
                                                 <div class="mb-3">
                                                     <label for="verifikator" class="form-label">Verifikator</label>
                                                     <input type="text" id="verifikator" name="verifikator" class="form-control">
-                                                </div>  
-                                                
-                                            </div> <!-- end col -->
+                                                </div>   
+                                            </div>  -->
+                                            <!-- end col -->
 
-                                            <div class="col-lg-6">
+                                            <!-- <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label for="kasi_urji" class="form-label">Kasi Urji</label>
                                                     <input type="text" id="kasi_urji" name="kasi_urji" class="form-control">
                                                 </div>  
 
-                                            </div> <!-- end col -->
+                                            </div> -->
+                                            <!-- end col -->
 
 
                                         </div>
@@ -695,14 +753,9 @@ $(document).ready(function() {
     $('#fullWidthModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget);
         var modal = $(this);
-        modal.find('.modal-title').text('Tambah Data');
+        modal.find('.modal-title').text('Tambah Data Lembar Kontrol');
         modal.find('.modal-body #id').val('');
-        modal.find('.modal-body #no_kontrak').val('');
-        // modal.find('.modal-body #position').val('');
-        // modal.find('.modal-body #office').val('');
-        // modal.find('.modal-body #age').val('');
-        // modal.find('.modal-body #start_date').val('');
-        // modal.find('.modal-body #salary').val('');
+        modal.find('.modal-body #no_kontrak').val(''); 
     });
 
     // Edit Data
@@ -761,8 +814,11 @@ $(document).ready(function() {
         var id = $(this).data('id');
         if (confirm('Are you sure want to delete this data?')) {
             $.ajax({
-                url: '/route-to-delete-data/' + id,
+                url: '/lembar-kontrol/delete/' + id,
                 method: 'DELETE',
+                data: {
+                    _token: '{{ csrf_token() }}'
+                },
                 success: function (response) {
                     // Refresh table or redirect
                     toastr.success('Data berhasil dihapus.');

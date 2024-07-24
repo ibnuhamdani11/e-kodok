@@ -19,7 +19,7 @@ class LembarKontrolController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'file' => 'required|mimes:pdf,doc,docx,png,jpg,jpeg|max:2048', // Add validation rules
+            'file' => 'required|mimes:pdf,doc,docx,png,jpg,jpeg|max:100048', // Add validation rules
             // Add other validation rules here
         ]);
         $fileName = time().'.'.$request->file->extension();  
@@ -46,7 +46,7 @@ class LembarKontrolController extends Controller
         return response()->json(['success' => 'Data updated successfully']);
     }
 
-    public function destroy($id)
+    public function delete($id)
     {
         LembarKontrol::destroy($id);
         return response()->json(['success' => 'Data deleted successfully']);

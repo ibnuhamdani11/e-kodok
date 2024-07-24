@@ -117,7 +117,7 @@
                                                             '<p class="text-truncate mb-0">Uraian Tagihan '+item.uraian_tagihan+'</p>'+
                                                             '<p class="text-truncate mb-0">SKB SKTD '+item.skb_sktd+'</p>'+
                                                         '</div>'+
-                                                        '<div class="font-11">05 min</div>'+
+                                                        '<div class="font-11">'+new Date(item.updated_at)+'</div>'+
                                                     '</div>'+
                                                 '</a>'+
                                             '</li>';

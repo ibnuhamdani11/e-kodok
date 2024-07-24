@@ -59,10 +59,9 @@
                         <span> Lembar Kontrol </span>
                     </a>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="#petugas" data-bs-toggle="collapse">
-                        <i class="mdi mdi-account-circle-outline"></i>
-                        <!-- <span class="badge bg-success rounded-pill float-end">9+</span> -->
+                        <i class="mdi mdi-account-circle-outline"></i> 
                         <span> Petugas </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -79,7 +78,7 @@
                             </li>
                         </ul>
                     </div>
-                </li> 
+                </li>  -->
 
                 
             </ul>

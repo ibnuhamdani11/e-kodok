@@ -41,6 +41,14 @@
                                 <h4 class="text-uppercase mt-0">Sign In</h4>
                             </div>
 
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    @foreach ($errors->all() as $error)
+                                        <p>{{ $error }}</p>
+                                    @endforeach
+                                </div>
+                            @endif
+
                             <form method="POST" action="{{ route('login.custom') }}">
                             @csrf
                                 <div class="mb-3">
