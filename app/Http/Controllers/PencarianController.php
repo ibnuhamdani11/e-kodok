@@ -25,7 +25,7 @@ class PencarianController extends Controller
                     ->orWhere('sub_satker', 'like', '%' . $keyword . '%')
                     ->orWhere('pic_vendor', 'like', '%' . $keyword . '%')
                     ->orWhere('nomor_skb_sktd', 'like', '%' . $keyword . '%')
-                    ->get(['tahun_anggaran', 'no_kontrak', 'sub_satker', 'uraian_tagihan', 'pic_vendor', 'nomor_skb_sktd', 'updated_at']); // Adjust to your actual columns
+                    ->get(['id','tahun_anggaran', 'no_kontrak', 'sub_satker', 'uraian_tagihan', 'pic_vendor', 'nomor_skb_sktd', 'file', 'updated_at']); // Adjust to your actual columns
 
         return response()->json($results);
     }

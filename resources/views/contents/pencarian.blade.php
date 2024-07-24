@@ -106,7 +106,7 @@
                     if (response.length > 0) {
                         response.forEach(function(item) {
                             var listItem = '<li class="active">'+
-                                                '<a href="#">'+
+                                                '<a href="/uploads/'+item.file+'" download target="_blank">'+
                                                     '<div class="d-flex">'+
                                                         
                                                         '<div class="flex-grow-1 overflow-hidden">'+
@@ -117,19 +117,10 @@
                                                             '<p class="text-truncate mb-0">Uraian Tagihan '+item.uraian_tagihan+'</p>'+
                                                             '<p class="text-truncate mb-0">SKB SKTD '+item.skb_sktd+'</p>'+
                                                         '</div>'+
-                                                        '<div class="font-11">'+new Date(item.updated_at)+'</div>'+
+                                                        '<div class="font-11">'+new Date(item.updated_at).toISOString().split('T')[0]+'</div>'+
                                                     '</div>'+
                                                 '</a>'+
                                             '</li>';
-                            // var listItem = '<li>' + 
-                            //     '<div class="d-flex align-items-center">' +
-                            //         '<div class="flex-grow-1 ms-2">' +
-                            //             '<h5 class="mt-0 mb-1">' + item.tahun_anggaran + '</h5>' +
-                            //             '<p class="font-13 text-muted mb-0">' + item.no_kontrak + '</p>' +
-                            //         '</div>' +
-                            //     '</div>' +
-                            //     '<hr class="my-3">' +
-                            // '</li>';
                             resultsContainer.append(listItem);
                             console.log("cari ", item.tahun_anggaran);
                         });
