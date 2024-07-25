@@ -42,8 +42,39 @@ class LembarKontrolController extends Controller
     public function update(Request $request, $id)
     {
         $data = LembarKontrol::find($id);
-        $data->update($request->all());
-        return response()->json(['success' => 'Data updated successfully']);
+        $formData = array(
+            'tahun_anggaran' => $request->tahun_anggaran,
+            'no_kontrak' => $request->no_kontrak,
+            'sub_satker'        => $request->sub_satker,
+            'pic_vendor'        => $request->pic_vendor,
+            'nomor_skb_sktd'    => $request->nomor_skb_sktd,
+            'uraian_tagihan'    => $request->uraian_tagihan
+        );
+        if ($request->hasFile('file')) {
+            $request->validate([
+                'file' => 'required|mimes:pdf,doc,docx,png,jpg,jpeg|max:100048',
+            ]);  
+
+            // Delete the old file if it exists
+            if ($data->file && file_exists(public_path('uploads/'.$data->file))) {
+                unlink(public_path('uploads/'.$data->file));
+            }
+
+            // Upload the new file
+            $fileName = time().'.'.$request->file->extension();
+            $request->file->move(public_path('uploads'), $fileName);
+            $formData['file'] = $fileName; 
+        }     
+        // dd($formData);
+        // log::info("data ", [$request->tahung_anggaran]);
+        // log::info("id ", [$id]);
+        $result = LembarKontrol::where('id', $id)->update($formData);
+        if($result){
+            return response()->json(['success' => 'Data updated successfully']);
+        }else{
+            return response()->json(['gagal' => 'Data gagal successfully']);
+        }
+        
     }
 
     public function delete($id)
